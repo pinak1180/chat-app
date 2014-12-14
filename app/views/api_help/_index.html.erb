@@ -1,0 +1,15 @@
+<table border="1" class="top tbltop">
+  <thead>
+    <tr>
+      <th>Sr. #</th>
+      <th>API NAME</th>
+      <th>REQUEST TYPE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% i = 0 %>
+    <% index_arr.each do |api_index| %>
+      <%= index_row_entry(i+=1, api_index.name, "##{api_index.link_ref}", api_index.method_type) %>
+    <% end %>
+  </tbody>
+</table>

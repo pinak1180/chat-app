@@ -1,0 +1,55 @@
+<div class="box-element">
+  <a name="<%= link_href %>">	    
+    <div class="box-head-light">
+    <h3 style="cursor:pointer;"><%= link_name %></h3></div>
+  </a>
+  <div class="box-content">
+    <%= options[:notes].try(:html_safe) %><br/>
+    <a name="<%= link_href %>">
+      API URL: <br>
+      <span id="link_<%= link_href %>"><%= Figaro.env.host %><%= original_link %></span>
+      <br>
+      Method: <span id="method_<%= link_href %>"><%= link_method %></span>
+      <br>
+	    <br>
+      <% if parameters.present? %>
+        <br>
+  		  <form class="form_<%= link_href %>">
+  	      <br>
+          Parameters:
+          <br>
+    	    <table width="100%" cellpadding="4" cellspacing="0" border="1" bordercolor="#808080"> 	    
+    	      <thead>
+              <tr bgcolor="#eeeeee">
+                <td> Field name </td>
+                <td> Description </td>
+                <td>Example</td>
+                <td>Req</td>
+              </tr>
+            </thead>
+    	    <tbody>
+    	      <% parameters.each do |parameter| %>	
+              <tr>
+                <td width="140"><%= parameter[:name] %></td>
+                <td><%= parameter[:description] %></td>
+                <td width="210"><input name="<%= parameter[:name] %>" size="40"  value="<%= parameter[:value] %>"></td>
+                <td width="30"> <%= "*" if parameter[:required]==1 %></td>
+              </tr>
+            <% end %>  
+          </tbody>
+          </table>
+        </form>
+      <% end %>
+      Example call <br>
+      <textarea id="example_<%= link_href %>" style="font-family: Courier New" rows="4" cols="90"><%=  Figaro.env.host %><%= original_link %></textarea>
+      <br>
+      <input type="button" id="button_cars" onclick="example(&quot;<%= link_href %>&quot;);" value="Execute"> <br>
+      <br>
+      <div id="raw_<%= link_href %>" style="font-family: courier new; font-size: 10pt;"></div>
+      <br>
+      <div id="output_<%= link_href %>" style="font-family: courier new; font-size: 10pt;"></div>
+      <br>
+    </a>
+    <a href="#top">go to top</a>
+   </div>
+</div>

@@ -1,0 +1,109 @@
+<span class="left_panel">
+  <div class="table">
+    <%= render partial: 'index', locals: {index_arr: ApiIndexRenderer.passenger_api_index } %>
+  </div>  
+</span>
+<span class='right_panel'>  
+  <!-- Sign Up Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Sign Up', 
+        link_href: 'signup',
+        link_method: 'POST',
+        original_link: api_authentication_signup_path,
+        parameters: [
+          {name: 'user[first_name]', description: 'First Name', required: 1},
+          {name: 'user[last_name]', description: 'Last Name', required: 1},
+          {name: 'user[email]', description: 'Email Address of User', required: 1 },
+          {name: 'user[password]', description: 'Password', required: 1},
+          {name: 'user[password_confirmation]', description: 'password_confirmation', required: 1},
+          {name: 'user[language]', description: 'language code', required: 1}
+        ],
+        options: {}} %>
+
+
+  <!-- Login Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Login', 
+        link_href: 'login',
+        link_method: 'POST',
+        original_link: api_authentication_login_path,
+        parameters: [
+          {name: 'email', description: 'Email Address of User', required: 1 },
+          {name: 'password', description: 'Password', required: 1}
+            
+        ],
+        options: {}} %>
+
+  <!-- Login Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Send Friend Request', 
+        link_href: 'send_friend_request',
+        link_method: 'POST',
+        original_link: api_authentication_send_friend_request_path,
+        parameters: [
+          {name: 'authentication_token', description: 'You will get authentication token from signup/login api', required: 1 },
+          {name: 'email', description: 'Email Address of User', required: 1 }
+        ],
+        options: {}} %>        
+
+  <%= render partial: 'api', locals: {
+        link_name: 'confirm Friend Request', 
+        link_href: 'confirm_friend_request',
+        link_method: 'POST',
+        original_link: api_authentication_confirm_friend_request_path,
+        parameters: [
+          {name: 'authentication_token', description: 'You will get authentication token from signup/login api', required: 1 },
+          {name: 'friend_id', description: 'friend_id', required: 1 }
+        ],
+        options: {}} %>
+
+   <!-- Forgot Password Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Forgot Password Api', 
+        link_href: 'forgot_password',
+        link_method: 'POST',
+        original_link: api_authentication_forgot_password_path,
+        parameters: [
+          {name: 'email', description: 'Email Address of User', required: 1 }
+        ],
+        options: {}} %>
+  
+<!-- Change Password Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Change Password', 
+        link_href: 'change_password',
+        link_method: 'POST',
+        original_link: api_authentication_change_password_path,
+        parameters: [
+          {name: 'authentication_token', description: 'You will get authentication token from signup/login api', required: 1 },
+          {name: 'user[current_password]', description: 'Current Password', required: 1 },
+          {name: 'user[password]', description: 'New Password', required: 1 },
+        ],
+        options: {}} %>
+
+ <!-- Logout -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Logout', 
+        link_href: 'logout',
+        link_method: 'GET',
+        original_link: api_authentication_logout_path,
+        parameters: [
+          {name: 'authentication_token', description: 'You will get authentication token from signup/login api', required: 1 }
+            
+        ],
+        options: {}} %>
+
+<!-- Get Content Api -->
+  <%= render partial: 'api', locals: {
+        link_name: 'Get Content', 
+        link_href: 'get_content',
+        link_method: 'GET',
+        original_link: api_authentication_get_content_path,
+        parameters: [
+          {name: 'content_type', description: '1,2 for terms, privacy respectively', required: 1 }
+        ],
+      options: {}}
+    %>
+
+  
+</span>
