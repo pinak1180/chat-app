@@ -50,7 +50,6 @@ gem 'twitter'
 gem "linkedin"
 gem 'fb_graph'
 gem 'pubnub'
-gem  'git-deploy'
 group :production do
   gem "unicorn"
 end
